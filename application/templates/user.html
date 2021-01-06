@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% set active_page = "courses" %}
+
+{% block content %}
+<h1>Course Offerings</h1>
+
+<!--  Display the Term and Year here --->
+<h3>Users</h3>
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for user in users %}
+            <tr>
+                <td scope='row'>{{user["user_id"]}}</td>
+                <td>{{user["first_name"]}}</td>
+                <td>{{user["last_name"]}}</td>
+                <td>{{user["email"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% for user in users %}
+    <dl>
+        <dt>User ID: {{ user.user_id}}</dt>
+        <dd>Email: {{user.email}}</dd>
+        <dd>Password: {{user.password}}</dd>
+    </dl>
+    {% else %}
+
+    <h3>No users yet!</h3>
+    {% endfor %}
+</div>
+
+{% endblock %}
